@@ -34,15 +34,11 @@ public class UserResource {
 	@PostMapping("/users")
 	public ResponseEntity createUser(@RequestBody User user) {
 		User savedUser = service.save(user);
-
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedUser.getId())
 				.toUri();
-
 //		created 201
 //		client can easily go through there using headers response
-
 		return ResponseEntity.created(location).build();
-
 	}
 
 }
